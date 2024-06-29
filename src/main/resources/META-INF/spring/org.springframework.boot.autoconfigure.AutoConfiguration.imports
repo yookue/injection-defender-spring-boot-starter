@@ -1,0 +1,5 @@
+# Injection Defender for Spring Boot Starter
+# Copyright (c) 2022 Yookue Ltd. All rights reserved.
+# https://yookue.com
+
+com.yookue.springstarter.injectiondefender.config.InjectionDefenderAutoConfiguration
