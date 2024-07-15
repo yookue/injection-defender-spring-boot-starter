@@ -17,7 +17,7 @@
 package com.yookue.springstarter.injectiondefender.exception;
 
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import com.yookue.commonplexus.javaseutil.exception.MaliciousAccessException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

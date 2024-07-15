@@ -17,8 +17,8 @@
 package com.yookue.springstarter.injectiondefender.event;
 
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.springframework.context.ApplicationEvent;
 import lombok.Getter;
 
@@ -39,7 +39,7 @@ public class XSSInjectionEvent extends ApplicationEvent {
     /**
      * Constructs the event with the object which initially occurred
      * <p>
-     * If thrown by filter, this may be a {@link javax.servlet.http.HttpServletRequest}
+     * If thrown by filter, this may be a {@link jakarta.servlet.http.HttpServletRequest}
      * <br>
      * If thrown by jackson, this may be a {@link com.fasterxml.jackson.core.JsonParser}
      */

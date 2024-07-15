@@ -19,11 +19,11 @@ package com.yookue.springstarter.injectiondefender.filter;
 
 import java.io.IOException;
 import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Nonnull;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -46,7 +46,7 @@ import lombok.Setter;
 
 
 /**
- * {@link javax.servlet.Filter} for injection defender
+ * {@link jakarta.servlet.Filter} for injection defender
  *
  * @author David Hsing
  * @see org.springframework.web.filter.OncePerRequestFilter
@@ -61,7 +61,6 @@ public class InjectionDefenderFilter extends OncePerRequestFilter implements App
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    @SuppressWarnings("DuplicatedCode")
     protected void doFilterInternal(@Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull FilterChain chain) throws ServletException, IOException {
         InjectionDefenderProperties.SqlProtection sqlProps = properties.getSqlProtection();
         InjectionDefenderProperties.XssProtection xssProps = properties.getXssProtection();

@@ -18,8 +18,8 @@ package com.yookue.springstarter.injectiondefender.jackson;
 
 
 import java.io.IOException;
-import javax.annotation.Nullable;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Nullable;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationEventPublisher;
@@ -77,7 +77,7 @@ public class InjectionDefenderDeserializer extends JsonDeserializer<String> {
         if (!sqlValidate && !xssValidate) {
             return trimIfPossible(fieldValue);
         }
-        String fieldName = parser.getCurrentName();
+        String fieldName = parser.currentName();
         if (sqlValidate && InjectionDefenderUtils.maybeSqlInjection(fieldValue)) {
             if (publisher != null) {
                 publisher.publishEvent(new SQLInjectionEvent(request, fieldName, fieldValue));

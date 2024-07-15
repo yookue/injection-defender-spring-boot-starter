@@ -19,7 +19,7 @@ package com.yookue.springstarter.injectiondefender.util;
 
 import java.util.Collection;
 import java.util.regex.Pattern;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;

@@ -17,7 +17,7 @@
 package com.yookue.springstarter.injectiondefender.advice;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -37,11 +37,9 @@ import lombok.AllArgsConstructor;
 @ControllerAdvice
 @RestControllerAdvice
 @SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})
-public class StringTrimmerBindingAdvice implements WebBindingInitializer {
-    private boolean emptyAsNull;
-
+public class StringTrimmerNullAdvice implements WebBindingInitializer {
     @InitBinder
     public void initBinder(@Nonnull WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(emptyAsNull));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 }
