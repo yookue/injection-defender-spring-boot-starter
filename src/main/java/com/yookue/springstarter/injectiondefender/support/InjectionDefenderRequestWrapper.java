@@ -61,7 +61,7 @@ public class InjectionDefenderRequestWrapper extends ContentCachingRequestWrappe
     }
 
     @Override
-    @SuppressWarnings("NullableProblems")
+    @SuppressWarnings({"NullableProblems", "DataFlowIssue"})
     public String getParameter(@Nullable String name) {
         if (StringUtils.isBlank(name)) {
             return null;
@@ -91,7 +91,7 @@ public class InjectionDefenderRequestWrapper extends ContentCachingRequestWrappe
     }
 
     @Override
-    @SuppressWarnings("NullableProblems")
+    @SuppressWarnings({"NullableProblems", "DataFlowIssue"})
     public String[] getParameterValues(@Nullable String name) {
         if (StringUtils.isBlank(name)) {
             return null;
