@@ -123,7 +123,7 @@ public class InjectionDefenderProperties implements Serializable {
         private Boolean enabled = true;
 
         /**
-         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.SQLInjectionException} when injection occurred or not
+         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException} when injection occurred or not
          * <p>
          * Default is {@code true}
          */
@@ -155,7 +155,7 @@ public class InjectionDefenderProperties implements Serializable {
         private Boolean cleanParams = true;
 
         /**
-         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.XSSInjectionException} when injection occurred or not
+         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.MaliciousXssException} when injection occurred or not
          */
         private Boolean throwsException;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import lombok.experimental.StandardException;
 
 
 /**
- * Checked exception thrown that may be a sql injection
+ * Checked exception thrown that may be a xss injection
  *
  * @author David Hsing
  */
@@ -33,23 +33,23 @@ import lombok.experimental.StandardException;
 @Getter
 @StandardException
 @SuppressWarnings("unused")
-public class SQLInjectionException extends MaliciousAccessException {
+public class MaliciousXssException extends MaliciousAccessException {
     private String paramName;
     private Object paramValue;
 
-    public SQLInjectionException(@Nullable String message, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousXssException(@Nullable String message, @Nullable String paramName, @Nullable Object paramValue) {
         super(message);
         this.paramName = paramName;
         this.paramValue = paramValue;
     }
 
-    public SQLInjectionException(@Nullable String message, @Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousXssException(@Nullable String message, @Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
         super(message, cause);
         this.paramName = paramName;
         this.paramValue = paramValue;
     }
 
-    public SQLInjectionException(@Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousXssException(@Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
         super(cause);
         this.paramName = paramName;
         this.paramValue = paramValue;

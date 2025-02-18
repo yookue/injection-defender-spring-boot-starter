@@ -33,10 +33,10 @@ import com.yookue.commonplexus.javaseutil.util.JsoupParserWraps;
 import com.yookue.commonplexus.springutil.util.AntPathWraps;
 import com.yookue.commonplexus.springutil.util.UriUtilsWraps;
 import com.yookue.commonplexus.springutil.util.WebUtilsWraps;
-import com.yookue.springstarter.injectiondefender.event.SQLInjectionEvent;
-import com.yookue.springstarter.injectiondefender.event.XSSInjectionEvent;
-import com.yookue.springstarter.injectiondefender.exception.SQLInjectionException;
-import com.yookue.springstarter.injectiondefender.exception.XSSInjectionException;
+import com.yookue.springstarter.injectiondefender.event.MaliciousSqlEvent;
+import com.yookue.springstarter.injectiondefender.event.MaliciousXssEvent;
+import com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException;
+import com.yookue.springstarter.injectiondefender.exception.MaliciousXssException;
 import com.yookue.springstarter.injectiondefender.property.InjectionDefenderProperties;
 import com.yookue.springstarter.injectiondefender.util.InjectionDefenderUtils;
 import lombok.AllArgsConstructor;
@@ -80,19 +80,19 @@ public class InjectionDefenderDeserializer extends JsonDeserializer<String> {
         String fieldName = parser.currentName();
         if (sqlValidate && InjectionDefenderUtils.maybeSqlInjection(fieldValue)) {
             if (publisher != null) {
-                publisher.publishEvent(new SQLInjectionEvent(request, fieldName, fieldValue));
+                publisher.publishEvent(new MaliciousSqlEvent(request, fieldName, fieldValue));
             }
             if (BooleanUtils.isTrue(sqlProps.getThrowsException())) {
-                throw new SQLInjectionException("Request may be a malicious access", fieldName, fieldValue);
+                throw new MaliciousSqlException("Request may be a malicious access", fieldName, fieldValue);
             }
         }
         if (xssValidate) {
             if (InjectionDefenderUtils.maybeXssInjection(fieldValue)) {
                 if (publisher != null) {
-                    publisher.publishEvent(new XSSInjectionEvent(request, fieldName, fieldValue));
+                    publisher.publishEvent(new MaliciousXssEvent(request, fieldName, fieldValue));
                 }
                 if (BooleanUtils.isTrue(xssProps.getThrowsException())) {
-                    throw new XSSInjectionException("Request may be a malicious access", fieldName, fieldValue);
+                    throw new MaliciousXssException("Request may be a malicious access", fieldName, fieldValue);
                 }
             }
             if (BooleanUtils.isTrue(xssProps.getCleanParams()) && StringUtils.containsAny(fieldValue, CharVariantConst.ANGLE_BRACKET_LEFT, CharVariantConst.ANGLE_BRACKET_RIGHT)) {

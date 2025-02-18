@@ -28,11 +28,11 @@ import lombok.Getter;
  *
  * @author David Hsing
  * @see org.springframework.web.context.support.ServletRequestHandledEvent
- * @see com.yookue.springstarter.injectiondefender.exception.XSSInjectionException
+ * @see com.yookue.springstarter.injectiondefender.exception.MaliciousXssException
  */
 @Getter
 @SuppressWarnings("unused")
-public class XSSInjectionEvent extends ApplicationEvent {
+public class MaliciousXssEvent extends ApplicationEvent {
     private String paramName;
     private Object paramValue;
 
@@ -43,11 +43,11 @@ public class XSSInjectionEvent extends ApplicationEvent {
      * <br>
      * If thrown by jackson, this may be a {@link com.fasterxml.jackson.core.JsonParser}
      */
-    public XSSInjectionEvent(@Nonnull Object source) {
+    public MaliciousXssEvent(@Nonnull Object source) {
         super(source);
     }
 
-    public XSSInjectionEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousXssEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
         super(source);
         this.paramName = paramName;
         this.paramValue = paramValue;

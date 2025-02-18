@@ -33,10 +33,10 @@ import com.yookue.commonplexus.javaseutil.util.BooleanUtilsWraps;
 import com.yookue.commonplexus.javaseutil.util.JsoupParserWraps;
 import com.yookue.commonplexus.springutil.util.AntPathWraps;
 import com.yookue.commonplexus.springutil.util.UriUtilsWraps;
-import com.yookue.springstarter.injectiondefender.event.SQLInjectionEvent;
-import com.yookue.springstarter.injectiondefender.event.XSSInjectionEvent;
-import com.yookue.springstarter.injectiondefender.exception.SQLInjectionException;
-import com.yookue.springstarter.injectiondefender.exception.XSSInjectionException;
+import com.yookue.springstarter.injectiondefender.event.MaliciousSqlEvent;
+import com.yookue.springstarter.injectiondefender.event.MaliciousXssEvent;
+import com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException;
+import com.yookue.springstarter.injectiondefender.exception.MaliciousXssException;
 import com.yookue.springstarter.injectiondefender.property.InjectionDefenderProperties;
 import com.yookue.springstarter.injectiondefender.support.InjectionDefenderRequestWrapper;
 import com.yookue.springstarter.injectiondefender.util.InjectionDefenderUtils;
@@ -70,18 +70,18 @@ public class InjectionDefenderFilter extends OncePerRequestFilter implements App
             for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
                 if (sqlValidate && InjectionDefenderUtils.maybeSqlInjection(entry.getValue())) {
                     if (applicationEventPublisher != null) {
-                        applicationEventPublisher.publishEvent(new SQLInjectionEvent(request, entry.getKey(), entry.getValue()));
+                        applicationEventPublisher.publishEvent(new MaliciousSqlEvent(request, entry.getKey(), entry.getValue()));
                     }
                     if (BooleanUtils.isTrue(sqlProps.getThrowsException())) {
-                        throw new SQLInjectionException("Request may be a malicious access", entry.getKey(), entry.getValue());
+                        throw new MaliciousSqlException("Request may be a malicious access", entry.getKey(), entry.getValue());
                     }
                 }
                 if (xssValidate && InjectionDefenderUtils.maybeXssInjection(entry.getValue())) {
                     if (applicationEventPublisher != null) {
-                        applicationEventPublisher.publishEvent(new XSSInjectionEvent(request, entry.getKey(), entry.getValue()));
+                        applicationEventPublisher.publishEvent(new MaliciousXssEvent(request, entry.getKey(), entry.getValue()));
                     }
                     if (BooleanUtils.isTrue(xssProps.getThrowsException())) {
-                        throw new XSSInjectionException("Request may be a malicious access", entry.getKey(), entry.getValue());
+                        throw new MaliciousXssException("Request may be a malicious access", entry.getKey(), entry.getValue());
                     }
                 }
             }

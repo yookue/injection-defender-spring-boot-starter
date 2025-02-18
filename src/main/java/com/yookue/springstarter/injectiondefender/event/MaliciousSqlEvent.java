@@ -28,11 +28,11 @@ import lombok.Getter;
  *
  * @author David Hsing
  * @see org.springframework.web.context.support.ServletRequestHandledEvent
- * @see com.yookue.springstarter.injectiondefender.exception.SQLInjectionException
+ * @see com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException
  */
 @Getter
 @SuppressWarnings("unused")
-public class SQLInjectionEvent extends ApplicationEvent {
+public class MaliciousSqlEvent extends ApplicationEvent {
     private String paramName;
     private Object paramValue;
 
@@ -43,11 +43,11 @@ public class SQLInjectionEvent extends ApplicationEvent {
      * <br>
      * If thrown by jackson, this may be a {@link com.fasterxml.jackson.core.JsonParser}
      */
-    public SQLInjectionEvent(@Nonnull Object source) {
+    public MaliciousSqlEvent(@Nonnull Object source) {
         super(source);
     }
 
-    public SQLInjectionEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousSqlEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
         super(source);
         this.paramName = paramName;
         this.paramValue = paramValue;
