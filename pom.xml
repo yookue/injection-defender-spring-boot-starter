@@ -49,7 +49,7 @@
 
         <spring-boot.version>3.4.2</spring-boot.version>
 
-        <jsoup.version>1.18.3</jsoup.version>
+        <jsoup.version>1.19.1</jsoup.version>
         <plexus-spring-condition.version>3.4.2</plexus-spring-condition.version>
 
         <javadoc-docent-maven-plugin.version>2.0.2</javadoc-docent-maven-plugin.version>
