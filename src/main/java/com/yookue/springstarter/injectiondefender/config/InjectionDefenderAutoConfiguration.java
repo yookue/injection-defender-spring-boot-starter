@@ -20,6 +20,7 @@ package com.yookue.springstarter.injectiondefender.config;
 import java.util.Optional;
 import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -35,7 +36,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yookue.commonplexus.javaseutil.util.CollectionPlainWraps;
 import com.yookue.commonplexus.javaseutil.util.MapPlainWraps;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnAnyProperties;
+import com.yookue.commonplexus.springcondition.annotation.ConditionalOnAnyBooleanProperties;
 import com.yookue.commonplexus.springutil.jackson.deserializer.StringTrimmerDeserializer;
 import com.yookue.springstarter.injectiondefender.advice.StringTrimmerEmptyAdvice;
 import com.yookue.springstarter.injectiondefender.advice.StringTrimmerNullAdvice;
@@ -50,7 +51,7 @@ import com.yookue.springstarter.injectiondefender.property.InjectionDefenderProp
  * @author David Hsing
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "enabled", matchIfMissing = true)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @EnableConfigurationProperties(value = InjectionDefenderProperties.class)
 public class InjectionDefenderAutoConfiguration implements WebMvcConfigurer {
@@ -80,14 +81,14 @@ public class InjectionDefenderAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean(name = STRING_TRIMMER_NULL_ADVICE)
-    @ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params", havingValue = "true")
+    @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params")
     @ConditionalOnMissingBean(name = STRING_TRIMMER_NULL_ADVICE)
     public StringTrimmerNullAdvice stringTrimmerNullAdvice() {
         return new StringTrimmerNullAdvice();
     }
 
     @Bean(name = JACKSON_STRING_TRIMMER_CUSTOMIZER)
-    @ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params", havingValue = "true")
+    @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params")
     @ConditionalOnClass(value = ObjectMapper.class)
     @ConditionalOnMissingBean(name = JACKSON_STRING_TRIMMER_CUSTOMIZER)
     @Order(value = 200)
@@ -97,9 +98,9 @@ public class InjectionDefenderAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean(name = JACKSON_INJECTION_DEFENDER_CUSTOMIZER)
-    @ConditionalOnAnyProperties(value = {
-        @ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX + ".sql-protection", name = "enabled", havingValue = "true", matchIfMissing = true),
-        @ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX + ".xss-protection", name = "enabled", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnAnyBooleanProperties(value = {
+        @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX + ".sql-protection", name = "enabled", matchIfMissing = true),
+        @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX + ".xss-protection", name = "enabled", matchIfMissing = true)
     })
     @ConditionalOnClass(value = ObjectMapper.class)
     @ConditionalOnMissingBean(name = JACKSON_INJECTION_DEFENDER_CUSTOMIZER)
