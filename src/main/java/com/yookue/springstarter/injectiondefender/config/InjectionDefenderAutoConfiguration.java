@@ -23,7 +23,6 @@ import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -74,7 +73,7 @@ public class InjectionDefenderAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean(name = STRING_TRIMMER_EMPTY_ADVICE)
-    @ConditionalOnProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "trim-params", havingValue = false, matchIfMissing = true)
     @ConditionalOnMissingBean(name = STRING_TRIMMER_EMPTY_ADVICE)
     public StringTrimmerEmptyAdvice stringTrimmerEmptyAdvice() {
         return new StringTrimmerEmptyAdvice();
