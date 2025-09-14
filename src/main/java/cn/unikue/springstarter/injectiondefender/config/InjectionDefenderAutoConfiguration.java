@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.config;
+package cn.unikue.springstarter.injectiondefender.config;
 
 
 import java.util.Optional;
@@ -33,15 +33,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yookue.commonplexus.javaseutil.util.CollectionPlainWraps;
-import com.yookue.commonplexus.javaseutil.util.MapPlainWraps;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnAnyBooleanProperties;
-import com.yookue.commonplexus.springutil.jackson.deserializer.StringTrimmerDeserializer;
-import com.yookue.springstarter.injectiondefender.advice.StringTrimmerEmptyAdvice;
-import com.yookue.springstarter.injectiondefender.advice.StringTrimmerNullAdvice;
-import com.yookue.springstarter.injectiondefender.filter.InjectionDefenderFilter;
-import com.yookue.springstarter.injectiondefender.jackson.InjectionDefenderDeserializer;
-import com.yookue.springstarter.injectiondefender.property.InjectionDefenderProperties;
+import cn.unikue.commonplexus.javaseutil.util.CollectionPlainWraps;
+import cn.unikue.commonplexus.javaseutil.util.MapPlainWraps;
+import cn.unikue.commonplexus.springcondition.annotation.ConditionalOnAnyBooleanProperties;
+import cn.unikue.commonplexus.springutil.jackson.deserializer.StringTrimmerDeserializer;
+import cn.unikue.springstarter.injectiondefender.advice.StringTrimmerEmptyAdvice;
+import cn.unikue.springstarter.injectiondefender.advice.StringTrimmerNullAdvice;
+import cn.unikue.springstarter.injectiondefender.filter.InjectionDefenderFilter;
+import cn.unikue.springstarter.injectiondefender.jackson.InjectionDefenderDeserializer;
+import cn.unikue.springstarter.injectiondefender.property.InjectionDefenderProperties;
 
 
 /**

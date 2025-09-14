@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022-2023 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.exception;
+package cn.unikue.springstarter.injectiondefender.exception;
 
 
 import jakarta.annotation.Nullable;
-import com.yookue.commonplexus.javaseutil.exception.MaliciousAccessException;
+import cn.unikue.commonplexus.javaseutil.exception.MaliciousAccessException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.StandardException;
 
 
 /**
- * Checked exception thrown that may be a xss injection
+ * Checked exception thrown that may be a sql injection
  *
  * @author David Hsing
  */
@@ -33,23 +33,23 @@ import lombok.experimental.StandardException;
 @Getter
 @StandardException
 @SuppressWarnings("unused")
-public class MaliciousXssException extends MaliciousAccessException {
+public class MaliciousSqlException extends MaliciousAccessException {
     private String paramName;
     private Object paramValue;
 
-    public MaliciousXssException(@Nullable String message, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousSqlException(@Nullable String message, @Nullable String paramName, @Nullable Object paramValue) {
         super(message);
         this.paramName = paramName;
         this.paramValue = paramValue;
     }
 
-    public MaliciousXssException(@Nullable String message, @Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousSqlException(@Nullable String message, @Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
         super(message, cause);
         this.paramName = paramName;
         this.paramValue = paramValue;
     }
 
-    public MaliciousXssException(@Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousSqlException(@Nullable Throwable cause, @Nullable String paramName, @Nullable Object paramValue) {
         super(cause);
         this.paramName = paramName;
         this.paramValue = paramValue;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.support;
+package cn.unikue.springstarter.injectiondefender.support;
 
 
 import java.util.Arrays;
@@ -29,7 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import org.springframework.web.util.ContentCachingRequestWrapper;
-import com.yookue.commonplexus.javaseutil.util.MapPlainWraps;
+import cn.unikue.commonplexus.javaseutil.util.MapPlainWraps;
 import lombok.Getter;
 import lombok.Setter;
 

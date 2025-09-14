@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.event;
+package cn.unikue.springstarter.injectiondefender.event;
 
 
 import jakarta.annotation.Nonnull;
@@ -24,15 +24,15 @@ import lombok.Getter;
 
 
 /**
- * Event when xss injection be intercepted
+ * Event when sql injection be intercepted
  *
  * @author David Hsing
  * @see org.springframework.web.context.support.ServletRequestHandledEvent
- * @see com.yookue.springstarter.injectiondefender.exception.MaliciousXssException
+ * @see cn.unikue.springstarter.injectiondefender.exception.MaliciousSqlException
  */
 @Getter
 @SuppressWarnings("unused")
-public class MaliciousXssEvent extends ApplicationEvent {
+public class MaliciousSqlEvent extends ApplicationEvent {
     private String paramName;
     private Object paramValue;
 
@@ -43,11 +43,11 @@ public class MaliciousXssEvent extends ApplicationEvent {
      * <br>
      * If thrown by jackson, this may be a {@link com.fasterxml.jackson.core.JsonParser}
      */
-    public MaliciousXssEvent(@Nonnull Object source) {
+    public MaliciousSqlEvent(@Nonnull Object source) {
         super(source);
     }
 
-    public MaliciousXssEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
+    public MaliciousSqlEvent(@Nonnull Object source, @Nullable String paramName, @Nullable Object paramValue) {
         super(source);
         this.paramName = paramName;
         this.paramValue = paramValue;

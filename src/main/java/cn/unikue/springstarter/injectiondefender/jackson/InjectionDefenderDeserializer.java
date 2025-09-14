@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.jackson;
+package cn.unikue.springstarter.injectiondefender.jackson;
 
 
 import java.io.IOException;
@@ -27,18 +27,18 @@ import org.springframework.util.CollectionUtils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.yookue.commonplexus.javaseutil.constant.CharVariantConst;
-import com.yookue.commonplexus.javaseutil.util.BooleanUtilsWraps;
-import com.yookue.commonplexus.javaseutil.util.JsoupParserWraps;
-import com.yookue.commonplexus.springutil.util.AntPathWraps;
-import com.yookue.commonplexus.springutil.util.UriUtilsWraps;
-import com.yookue.commonplexus.springutil.util.WebUtilsWraps;
-import com.yookue.springstarter.injectiondefender.event.MaliciousSqlEvent;
-import com.yookue.springstarter.injectiondefender.event.MaliciousXssEvent;
-import com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException;
-import com.yookue.springstarter.injectiondefender.exception.MaliciousXssException;
-import com.yookue.springstarter.injectiondefender.property.InjectionDefenderProperties;
-import com.yookue.springstarter.injectiondefender.util.InjectionDefenderUtils;
+import cn.unikue.commonplexus.javaseutil.constant.CharVariantConst;
+import cn.unikue.commonplexus.javaseutil.util.BooleanUtilsWraps;
+import cn.unikue.commonplexus.javaseutil.util.JsoupParserWraps;
+import cn.unikue.commonplexus.springutil.util.AntPathWraps;
+import cn.unikue.commonplexus.springutil.util.UriUtilsWraps;
+import cn.unikue.commonplexus.springutil.util.WebUtilsWraps;
+import cn.unikue.springstarter.injectiondefender.event.MaliciousSqlEvent;
+import cn.unikue.springstarter.injectiondefender.event.MaliciousXssEvent;
+import cn.unikue.springstarter.injectiondefender.exception.MaliciousSqlException;
+import cn.unikue.springstarter.injectiondefender.exception.MaliciousXssException;
+import cn.unikue.springstarter.injectiondefender.property.InjectionDefenderProperties;
+import cn.unikue.springstarter.injectiondefender.util.InjectionDefenderUtils;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 

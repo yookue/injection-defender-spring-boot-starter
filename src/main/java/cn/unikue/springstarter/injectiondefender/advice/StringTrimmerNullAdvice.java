@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.advice;
+package cn.unikue.springstarter.injectiondefender.advice;
 
 
 import jakarta.annotation.Nonnull;
@@ -37,9 +37,9 @@ import lombok.AllArgsConstructor;
 @ControllerAdvice
 @RestControllerAdvice
 @SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})
-public class StringTrimmerEmptyAdvice implements WebBindingInitializer {
+public class StringTrimmerNullAdvice implements WebBindingInitializer {
     @InitBinder
     public void initBinder(@Nonnull WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 }

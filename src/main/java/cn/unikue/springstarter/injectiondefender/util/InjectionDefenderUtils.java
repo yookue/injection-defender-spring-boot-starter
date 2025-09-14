@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.util;
+package cn.unikue.springstarter.injectiondefender.util;
 
 
 import java.util.Collection;
@@ -22,8 +22,8 @@ import java.util.regex.Pattern;
 import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
-import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
-import com.yookue.commonplexus.javaseutil.util.RegexUtilsWraps;
+import cn.unikue.commonplexus.javaseutil.util.ArrayUtilsWraps;
+import cn.unikue.commonplexus.javaseutil.util.RegexUtilsWraps;
 
 
 /**

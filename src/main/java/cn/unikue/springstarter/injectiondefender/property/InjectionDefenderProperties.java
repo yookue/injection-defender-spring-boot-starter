@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2022 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.injectiondefender.property;
+package cn.unikue.springstarter.injectiondefender.property;
 
 
 import java.io.Serializable;
@@ -22,8 +22,8 @@ import java.util.Map;
 import java.util.Set;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.Ordered;
-import com.yookue.commonplexus.javaseutil.enumeration.JsoupWhitelistType;
-import com.yookue.springstarter.injectiondefender.config.InjectionDefenderAutoConfiguration;
+import cn.unikue.commonplexus.javaseutil.enumeration.JsoupWhitelistType;
+import cn.unikue.springstarter.injectiondefender.config.InjectionDefenderAutoConfiguration;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -76,7 +76,7 @@ public class InjectionDefenderProperties implements Serializable {
      * Properties for defender filter
      *
      * @author David Hsing
-     * @see com.yookue.springstarter.injectiondefender.filter.InjectionDefenderFilter
+     * @see cn.unikue.springstarter.injectiondefender.filter.InjectionDefenderFilter
      */
     @Getter
     @Setter
@@ -123,7 +123,7 @@ public class InjectionDefenderProperties implements Serializable {
         private Boolean enabled = true;
 
         /**
-         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.MaliciousSqlException} when injection occurred or not
+         * Indicates whether to throw a {@link cn.unikue.springstarter.injectiondefender.exception.MaliciousSqlException} when injection occurred or not
          * <p>
          * Default is {@code true}
          */
@@ -155,7 +155,7 @@ public class InjectionDefenderProperties implements Serializable {
         private Boolean cleanParams = true;
 
         /**
-         * Indicates whether to throw a {@link com.yookue.springstarter.injectiondefender.exception.MaliciousXssException} when injection occurred or not
+         * Indicates whether to throw a {@link cn.unikue.springstarter.injectiondefender.exception.MaliciousXssException} when injection occurred or not
          */
         private Boolean throwsException;
 
