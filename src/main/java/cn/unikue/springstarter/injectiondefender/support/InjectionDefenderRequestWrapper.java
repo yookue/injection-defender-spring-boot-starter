@@ -47,7 +47,7 @@ public class InjectionDefenderRequestWrapper extends ContentCachingRequestWrappe
     private Safelist xssWhitelist;
 
     public InjectionDefenderRequestWrapper(@Nonnull HttpServletRequest request) {
-        super(request);
+        super(request, -1);
     }
 
     public InjectionDefenderRequestWrapper(@Nonnull HttpServletRequest request, int contentCacheLimit) {
@@ -55,7 +55,7 @@ public class InjectionDefenderRequestWrapper extends ContentCachingRequestWrappe
     }
 
     public InjectionDefenderRequestWrapper(@Nonnull HttpServletRequest request, boolean xssClean, @Nullable Safelist xssWhitelist) {
-        super(request);
+        super(request, -1);
         this.xssClean = xssClean;
         this.xssWhitelist = xssWhitelist;
     }
