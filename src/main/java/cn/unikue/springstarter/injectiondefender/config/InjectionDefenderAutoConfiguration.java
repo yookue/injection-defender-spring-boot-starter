@@ -51,7 +51,7 @@ import cn.unikue.springstarter.injectiondefender.property.InjectionDefenderPrope
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnBooleanProperty(prefix = InjectionDefenderAutoConfiguration.PROPERTIES_PREFIX, name = "enabled", matchIfMissing = true)
-@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@ConditionalOnWebApplication
 @EnableConfigurationProperties(value = InjectionDefenderProperties.class)
 public class InjectionDefenderAutoConfiguration implements WebMvcConfigurer {
     public static final String PROPERTIES_PREFIX = "spring.injection-defender";    // $NON-NLS-1$
